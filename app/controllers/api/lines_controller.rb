@@ -24,6 +24,17 @@ class Api::LinesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /api/lines/:id
+  def update
+    line = Line.find(params[:id])
+
+    if line && line.update(line_params)
+      render json: line
+    else
+      render status: :unprocessable_entity
+    end
+  end
+
   # DELETE /api/lines/:id
   def destroy
     line = Line.find(params[:id])
