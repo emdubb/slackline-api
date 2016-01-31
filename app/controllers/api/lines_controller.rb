@@ -24,6 +24,17 @@ class Api::LinesController < ApplicationController
     end
   end
 
+  # DELETE /api/lines/:id
+  def destroy
+    line = Line.find(params[:id])
+
+    if line && line.destroy
+      render json: line
+    else
+      render status: :unprocessable_entity
+    end
+  end
+
   private
     def line_params
       params.require(:line).permit(:brand, :length, :width, :style, :system, :user_id)
