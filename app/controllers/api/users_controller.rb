@@ -10,8 +10,10 @@ class Api::UsersController < ApplicationController
   def create
     user = User.create(user_params)
 
-    if user.save
+    if user.valid? && user.save
       token
+    elsif !user.valid?
+      render json: user.errors.messages
     else
       render status: :unprocessable_entity
     end
@@ -47,7 +49,7 @@ class Api::UsersController < ApplicationController
 
   # POST /api/token
   def token
-    user = User.find_by(email: user_params[:email])
+    user = User.ci_find('email', user_params[:email])
 
     if user && user.authenticate(user_params[:password])
       payload = {
