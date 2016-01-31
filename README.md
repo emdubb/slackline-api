@@ -46,7 +46,8 @@ Rails Route | HTTP Verb  | Endpoint                                | Access
 **CREATE**  | `POST`     | [`/api/posts/:post_id/comments`](#newComment)
 **UPDATE**  | `PATCH/PUT`| [`/api/comments/:id`](#udateComment)
 **DESTROY** | `DELETE`   | [`/api/comments/:id`](#deleteComment) 
-
+**CREATE**  | `POST`     | [`/api/token`](#token)
+**GET**     | `GET`      | [`/api/me`](#me)
 
 
 
