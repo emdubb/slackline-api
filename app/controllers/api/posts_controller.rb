@@ -4,7 +4,11 @@ class Api::PostsController < ApplicationController
 
   # GET /api/posts
   def index
-    posts = Post.all
+    if params[:current]
+      posts = Post.where(finished_at: nil)
+    else
+      posts = Post.all
+    end
     render json: posts
   end
 
