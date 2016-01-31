@@ -9,5 +9,8 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    get 'me', to: 'users#me'
+    post 'token', to: 'users#token'
   end
 end
