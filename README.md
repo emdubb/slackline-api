@@ -1,28 +1,63 @@
-== README
+# What's Slackin API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+_**[OVERVIEW](#overview)**_ | 
+_**[GETTING STARTED](#start)**_ | 
+_**[ENDPOINT REFERENCE](#endpoint)**_ | 
+_**[AUTHORIZATION](#auth)**_ | 
+_**[DATA MODEL](#model)**_
 
-Things you may want to cover:
+<a name="overview"></a>
+## Overview
 
-* Ruby version
+This API provides information about active slacklines to use in the What's Slackin'? App.
 
-* System dependencies
+### Technologies Used
 
-* Configuration
+* Ruby/Rails
+* jBuilder
+* jwt
+* [PostgreSQL](http://www.postgresql.org/docs/)
 
-* Database creation
+<a name="start"></a>
+## Getting Started
 
-* Database initialization
+Run `bundle install`
 
-* How to run the test suite
+<a name="endpoint"></a>
+## Endpoint Reference
 
-* Services (job queues, cache servers, search engines, etc.)
+Rails Route | HTTP Verb  | Endpoint                                | Access    
+:----------:|:----------:|-----------------------------------------|:---------------:
+**INDEX**   | `GET`      | `/`                                     | 
+**INDEX**   | `GET`      | [`/api/users`](#allUsers)                           
+**CREATE**  | `POST`     | [`/api/users`](#newUser)                            
+**SHOW**    | `GET`      | [`/api/users/:id`](#getUser)                        
+**UPDATE**  | `PATCH/PUT`| [`/api/users/:id`](#updateUser)             
+**DESTROY** | `DELETE`   | [`/api/users/:id`](#deleteUser)         
+**INDEX**   | `GET`      | [`/api/users/:user_id/lines`](#getLines)         
+**CREATE**  | `POST`     | [`/api/users/:user_id/lines`](#newLine)
+**UPDATE**  | `PATCH/PUT`| [`/api/lines/:id`](#updateLine)
+**DESTROY** | `DELETE`   | [`/api/lines/:id`](#deleteLine)         
+**INDEX**   | `GET`      | [`/api/lines/:line_id/posts`](#allPosts)
+**CREATE**  | `POST`     | [`/api/lines/:line_id/posts`](#newPost)
+**SHOW**    | `GET`      | [`/api/posts/:id`](#getPost)
+**UPDATE**  | `PATCH/PUT`| [`/api/posts/:id`](#updatePost)
+**INDEX**   | `GET`      | [`/api/posts/:post_id/comments`](#allComments)            
+**CREATE**  | `POST`     | [`/api/posts/:post_id/comments`](#newComment)
+**UPDATE**  | `PATCH/PUT`| [`/api/comments/:id`](#udateComment)
+**DESTROY** | `DELETE`   | [`/api/comments/:id`](#deleteComment) 
 
-* Deployment instructions
-
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+
+<a name="auth"></a>
+###Authorization
+
+<a name="model"></a>
+###Data Models
+
+
+
+---
+© 2016 EM DUBB
