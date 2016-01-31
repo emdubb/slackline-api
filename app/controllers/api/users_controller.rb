@@ -2,6 +2,10 @@ class Api::UsersController < ApplicationController
 
   before_action :authorize, except: [:create, :token]
 
+  def index
+    @users = User.all
+  end
+
   # POST /api/users
   def create
     user = User.create(user_params)
@@ -35,7 +39,8 @@ class Api::UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password,
+        :profile_img, :skill, :location, :latitude, :longitude,)
     end
 
 end
