@@ -40,6 +40,20 @@ class Api::PostsController < ApplicationController
     @user = User.find(@line.user_id)
   end
 
+  def update
+    post = Post.find(params[:id])
+
+    if params[:finished]
+      post.finished_at = Time.now
+      post.save
+      render json: post unless !post.save
+    elsif post && post.update(post_params)
+      render json: post
+    else
+      render status: :unprocessable_entity
+    end
+  end
+
   private
     def post_params
       params.require(:post).permit(:latitude, :longitude, :location, :difficulty,
