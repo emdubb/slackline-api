@@ -34,6 +34,12 @@ class Api::PostsController < ApplicationController
     end
   end
 
+  def show
+    render status: :not_found unless @post = Post.find(params[:id])
+    @line = Line.find(@post.line_id)
+    @user = User.find(@line.user_id)
+  end
+
   private
     def post_params
       params.require(:post).permit(:latitude, :longitude, :location, :difficulty,
