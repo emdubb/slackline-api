@@ -63,7 +63,7 @@ class Api::UsersController < ApplicationController
 
   # GET /api/me
   def me
-    @user = User.find_by(email: @credentials[:email])
+    @user = User.ci_find('email', @credentials[:email])
     render status: :not_found unless @user
   end
 
