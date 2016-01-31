@@ -17,6 +17,34 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  # GET /api/users/:id
+  def show
+    render status: :not_found unless @user = User.find(params[:id])
+  end
+
+  # PATCH/PUT /api/users/:id
+  def update
+    user = User.find(params[:id])
+
+    if user && user.update(user_params)
+      render json: user
+    else
+      render status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /api/users/:id
+  def destroy
+    user = User.find(params[:id])
+
+    if user && user.destroy
+      render json: user
+    else
+      render status: :unprocessable_entity
+    end
+  end
+
+
   # POST /api/token
   def token
     user = User.find_by(email: user_params[:email])
